@@ -20,3 +20,28 @@ ul {
 a {
   text-decoration: none;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 9rem;
+  color: rgb(0, 89, 255);
+}
+
+.loading__anim {
+  -webkit-animation: loading 1s linear infinite;
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
