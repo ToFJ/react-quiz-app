@@ -35,6 +35,26 @@ a {
   animation: loading 1s linear infinite;
 }
 
+.nav {
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 3px rgb(0 0 0 / 0.07);
+  padding: 0.5rem 0 0.5rem 0;
+}
+
+.nav p {
+  font-size: 1.5rem;
+  color: black;
+  cursor: pointer;
+  transition: all ease-in-out 300ms;
+}
+
+.nav p:hover {
+  text-decoration: underline;
+}
+
+/* keyframes */
+
 @keyframes loading {
   0% {
     -webkit-transform: rotate(0);
