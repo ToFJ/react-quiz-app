@@ -7,6 +7,10 @@ const AppProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState({ display: false, msg: "" });
 
+  // TODO: api needs index useState for next question (only show one ) + reduce for corret answer amount + if at end of questions array final screen with score + play again
+
+  // FUTURE TODO: change diff,category etc., leaderboard(localstorage)
+
   const fetchData = async () => {
     try {
       const resp = await fetch("https://opentdb.com/api.php?amount=10");
