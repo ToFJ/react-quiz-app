@@ -5,8 +5,7 @@ import { useGlobalContext } from "../context";
 const Modal = () => {
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [answers, setAnswers] = useState([]);
-  const { isLoading, data } = useGlobalContext();
+  const { isLoading, data, max, setMax, setReplay } = useGlobalContext();
   const { results } = data;
   console.log(results);
 
@@ -24,19 +23,27 @@ const Modal = () => {
   const checkCorrect = name => {
     if (name === results[index].correct_answer) {
       setScore(score + 1);
-      if (index <= 8) {
+      if (index <= results.length - 2) {
         setIndex(index + 1);
       }
     }
-    if (index <= 8) {
+    if (index <= results.length - 2) {
       setIndex(index + 1);
     }
+    setMax(max + 1);
   };
-  console.log(index);
+
+  const newGame = () => {
+    setReplay(new Date().getTime().toString());
+    setScore(0);
+    setIndex(0);
+    setMax(0);
+  };
+
   if (isLoading) {
     return <Loading />;
   }
-  console.log(score);
+
   const newAnswers = [...results[index].incorrect_answers, results[index].correct_answer];
 
   return (
@@ -57,6 +64,14 @@ const Modal = () => {
           })}
         </div>
       </div>
+      {max >= 10 ? (
+        <div className="finish-screen">
+          <p>Congratulations! you got {score}/10 correct</p>
+          <button onClick={newGame}>Play Again</button>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

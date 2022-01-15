@@ -6,8 +6,8 @@ const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [error, setError] = useState({ display: false, msg: "" });
-
-  // TODO: api needs index useState for next question (only show one ) + reduce for corret answer amount + if at end of questions array final screen with score + play again
+  const [max, setMax] = useState(0);
+  const [replay, setReplay] = useState("");
 
   // FUTURE TODO: change diff,category etc., leaderboard(localstorage)
 
@@ -28,9 +28,11 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [replay]);
 
-  return <AppContext.Provider value={{ error, data, isLoading }}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={{ error, data, isLoading, max, setMax, setReplay }}>{children}</AppContext.Provider>
+  );
 };
 
 const useGlobalContext = () => {

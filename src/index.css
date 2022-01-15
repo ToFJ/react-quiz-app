@@ -54,6 +54,7 @@ a {
 }
 
 .modal-section {
+  z-index: 10;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -74,12 +75,15 @@ a {
     margin: auto;
     margin-top: 10rem;
   }
+  .answers button:hover {
+    background-color: rgb(140, 240, 140);
+  }
 }
 
 .question {
   padding-left: 0.5rem;
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .q-count {
@@ -116,8 +120,37 @@ a {
   font-size: 1.1rem;
 }
 
-.answers button:hover {
-  background-color: rgb(140, 240, 140);
+.finish-screen {
+  z-index: 11;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 1px 5px 10px 10px rgb(0 0 0 / 0.1);
+  width: 80%;
+  height: 80%;
+  border-radius: 1rem;
+  border: 1px solid rgb(206, 206, 199);
+}
+
+.finish-screen p {
+  padding-bottom: 5rem;
+  padding-left: 0.5rem;
+}
+
+.finish-screen button {
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+  border: none;
+  font-size: 1.1rem;
+  transition: all ease-in-out 222ms;
+  cursor: pointer;
+}
+
+.finish-screen button:hover {
+  background-color: rgb(206, 206, 199);
 }
 
 /* keyframes */
