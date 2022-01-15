@@ -6,10 +6,7 @@ const Modal = () => {
   const [index, setIndex] = useState(0);
   const { isLoading, data } = useGlobalContext();
   const { results } = data;
-  console.log(results[0]);
-
-  const newAnswers = [...results[index].incorrect_answers, results[index].correct_answer];
-  console.log(newAnswers);
+  console.log(results);
 
   const randomizeAnswers = array => {
     let currentIndex = array.length,
@@ -26,18 +23,18 @@ const Modal = () => {
     return <Loading />;
   }
 
+  const newAnswers = [...results[index].incorrect_answers, results[index].correct_answer];
+
   return (
     <div className="modal-section">
       <div className="question">
         <p className="q-count">{index + 1}/10</p>
         <p className="q-category">{results[index].category}</p>
-        <h4 className="question">{results[index].question}</h4>
+        <h4 className="question" dangerouslySetInnerHTML={{ __html: results[index].question }}></h4>
         <div className="answers">
-          <ul>
-            {randomizeAnswers(newAnswers).map((answer, index) => {
-              return <li key={index}>{answer}</li>;
-            })}
-          </ul>
+          {randomizeAnswers(newAnswers).map((answer, index) => {
+            return <button key={index} dangerouslySetInnerHTML={{ __html: answer }}></button>;
+          })}
         </div>
       </div>
     </div>
