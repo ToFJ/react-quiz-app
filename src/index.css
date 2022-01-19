@@ -115,6 +115,7 @@ a {
   margin: 0.5rem;
   border-radius: 0.375rem;
   background-color: rgb(241, 241, 233);
+  border: 1px solid rgb(241, 241, 233);
   cursor: pointer;
   border: none;
   font-size: 1.1rem;
@@ -138,12 +139,13 @@ a {
 .finish-screen p {
   padding-bottom: 5rem;
   padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .finish-screen button {
   padding: 0.25rem 1rem;
   border-radius: 1rem;
-  border: none;
+  border: 1px solid black;
   font-size: 1.1rem;
   transition: all ease-in-out 222ms;
   cursor: pointer;
