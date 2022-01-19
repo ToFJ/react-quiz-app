@@ -66,7 +66,9 @@ const Modal = () => {
       </div>
       {max >= 10 ? (
         <div className="finish-screen">
-          <p>Congratulations! you got {score}/10 correct</p>
+          <p>
+            <span>Congratulations!</span>You got {score}/10 correct
+          </p>
           <button onClick={newGame}>Play Again</button>
         </div>
       ) : (
