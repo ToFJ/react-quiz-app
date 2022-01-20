@@ -6,7 +6,6 @@ import { useGlobalContext } from "../context";
 const Modal = () => {
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
-
   const {
     isLoading,
     data,
@@ -21,8 +20,8 @@ const Modal = () => {
     highScore,
     setHighScore,
   } = useGlobalContext();
+
   const { results } = data;
-  console.log(results);
 
   const randomizeAnswers = array => {
     let currentIndex = array.length,
