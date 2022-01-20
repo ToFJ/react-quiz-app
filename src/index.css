@@ -186,12 +186,20 @@ span {
 }
 
 select {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 }
 
 .setup-amount input {
   padding: 0.25rem 0.5rem;
   font-size: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .setup-form button {
+    padding: 0.5rem 1.5rem;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
 }
 
 /* keyframes */
