@@ -73,7 +73,7 @@ const Modal = () => {
         <QuizSetup />
       )}
 
-      {max >= options.amount ? (
+      {max >= options.amount && start === true ? (
         <div className="finish-screen">
           <p>
             <span>Congratulations!</span>You got {score}/{options.amount} correct

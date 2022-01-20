@@ -3,8 +3,8 @@ import { useGlobalContext } from "../context";
 const QuizSetup = () => {
   const { options, handleChange, handleStart } = useGlobalContext();
   return (
-    <div className="setup-form">
-      <div className="setup-amount">
+    <div className=" setup-form">
+      <div className=" setup-amount">
         <label htmlFor="amount">Number of questions: </label>
         <input
           type="number"
@@ -17,7 +17,7 @@ const QuizSetup = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="setup-category">
+      <div className=" setup-category">
         <label htmlFor="category">Category</label>
         <select name="category" id="category" value={options.category} onChange={handleChange}>
           <option value="9">General Knowledge</option>
@@ -25,7 +25,7 @@ const QuizSetup = () => {
           <option value="23">History</option>
         </select>
       </div>
-      <div className="setup-difficulty">
+      <div className=" setup-difficulty">
         <label htmlFor="difficulty">Difficulty</label>
         <select name="difficulty" id="difficulty" value={options.difficulty} onChange={handleChange}>
           <option value="easy">Easy</option>
