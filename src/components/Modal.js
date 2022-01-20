@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Loading from "./Loading";
 import QuizSetup from "./QuizSetup";
 import { useGlobalContext } from "../context";
@@ -6,7 +6,21 @@ import { useGlobalContext } from "../context";
 const Modal = () => {
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const { isLoading, data, max, setMax, setReplay, start, setStart, options } = useGlobalContext();
+
+  const {
+    isLoading,
+    data,
+    max,
+    setMax,
+    setReplay,
+    start,
+    setStart,
+    options,
+    allTime,
+    setAllTime,
+    highScore,
+    setHighScore,
+  } = useGlobalContext();
   const { results } = data;
   console.log(results);
 
@@ -24,6 +38,8 @@ const Modal = () => {
   const checkCorrect = name => {
     if (name === results[index].correct_answer) {
       setScore(score + 1);
+      setHighScore(highScore + 1);
+      localStorage.setItem("score", highScore);
       if (index <= results.length - 2) {
         setIndex(index + 1);
       }
@@ -31,6 +47,8 @@ const Modal = () => {
     if (index <= results.length - 2) {
       setIndex(index + 1);
     }
+    setAllTime(allTime + 1);
+    localStorage.setItem("all", allTime);
     setMax(max + 1);
   };
 

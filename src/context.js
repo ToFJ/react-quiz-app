@@ -14,6 +14,8 @@ const AppProvider = ({ children }) => {
     category: 9,
     difficulty: "easy",
   });
+  const [highScore, setHighScore] = useState(1);
+  const [allTime, setAllTime] = useState(1);
 
   const fetchData = async (amount, category, difficulty) => {
     try {
@@ -40,7 +42,6 @@ const AppProvider = ({ children }) => {
   const handleChange = e => {
     const name = e.target.name;
     const value = e.target.value;
-
     setOptions({ ...options, [name]: value });
   };
 
@@ -51,7 +52,23 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ handleStart, handleChange, error, data, isLoading, max, setMax, setReplay, options, start, setStart }}
+      value={{
+        handleStart,
+        handleChange,
+        error,
+        data,
+        isLoading,
+        max,
+        setMax,
+        setReplay,
+        options,
+        start,
+        setStart,
+        allTime,
+        setAllTime,
+        highScore,
+        setHighScore,
+      }}
     >
       {children}
     </AppContext.Provider>

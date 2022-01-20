@@ -37,7 +37,7 @@ a {
 
 .nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   box-shadow: 0 4px 3px rgb(0 0 0 / 0.07);
   padding: 0.5rem 0 0.5rem 0;
 }
@@ -148,7 +148,7 @@ a {
 
 .finish-screen p,
 span {
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
@@ -192,6 +192,14 @@ select {
 .setup-amount input {
   padding: 0.25rem 0.5rem;
   font-size: 1.25rem;
+}
+
+.leaderboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  padding: 0 3rem;
 }
 
 @media (max-width: 640px) {

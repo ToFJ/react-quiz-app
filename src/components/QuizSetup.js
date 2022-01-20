@@ -2,6 +2,7 @@ import { useGlobalContext } from "../context";
 
 const QuizSetup = () => {
   const { options, handleChange, handleStart } = useGlobalContext();
+
   return (
     <div className=" setup-form">
       <div className=" setup-amount">
