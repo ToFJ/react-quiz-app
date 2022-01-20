@@ -185,12 +185,12 @@ span {
   margin-top: 1rem;
 }
 
-.setup-amount input {
-  padding: 0.25rem 0.5rem;
+select {
+  font-size: 1.25rem;
 }
 
-select {
-  font-size: 16px;
+.setup-amount input {
+  padding: 0.25rem 0.5rem;
 }
 
 /* keyframes */
