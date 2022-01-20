@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import Loading from "./Loading";
+import QuizSetup from "./QuizSetup";
 import { useGlobalContext } from "../context";
 
 const Modal = () => {
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const { isLoading, data, max, setMax, setReplay } = useGlobalContext();
+  const { isLoading, data, max, setMax, setReplay, start, setStart, options } = useGlobalContext();
   const { results } = data;
   console.log(results);
 
@@ -38,6 +39,7 @@ const Modal = () => {
     setScore(0);
     setIndex(0);
     setMax(0);
+    setStart(false);
   };
 
   if (isLoading) {
@@ -48,26 +50,33 @@ const Modal = () => {
 
   return (
     <div className="modal-section">
-      <div className="question">
-        <p className="q-count">{index + 1}/10</p>
-        <p className="q-category">{results[index].category}</p>
-        <h4 className="question" dangerouslySetInnerHTML={{ __html: results[index].question }}></h4>
-        <div className="answers">
-          {randomizeAnswers(newAnswers).map((answer, index) => {
-            return (
-              <button
-                onClick={() => checkCorrect(answer)}
-                key={index}
-                dangerouslySetInnerHTML={{ __html: answer }}
-              ></button>
-            );
-          })}
+      {start ? (
+        <div className="question">
+          <p className="q-count">
+            {index + 1}/{options.amount}
+          </p>
+          <p className="q-category">{results[index].category}</p>
+          <h4 className="question" dangerouslySetInnerHTML={{ __html: results[index].question }}></h4>
+          <div className="answers">
+            {randomizeAnswers(newAnswers).map((answer, index) => {
+              return (
+                <button
+                  onClick={() => checkCorrect(answer)}
+                  key={index}
+                  dangerouslySetInnerHTML={{ __html: answer }}
+                ></button>
+              );
+            })}
+          </div>
         </div>
-      </div>
-      {max >= 10 ? (
+      ) : (
+        <QuizSetup />
+      )}
+
+      {max >= options.amount ? (
         <div className="finish-screen">
           <p>
-            <span>Congratulations!</span>You got {score}/10 correct
+            <span>Congratulations!</span>You got {score}/{options.amount} correct
           </p>
           <button onClick={newGame}>Play Again</button>
         </div>

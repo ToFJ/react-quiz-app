@@ -166,6 +166,25 @@ span {
   background-color: rgb(206, 206, 199);
 }
 
+.setup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.setup-form div {
+  margin-top: 0.5rem;
+  font-size: 1.125rem;
+}
+
+.setup-form div label {
+  margin-right: 0.5rem;
+}
+
+.setup-form button {
+  padding: 0.5em 1.5em;
+  margin-top: 1rem;
+}
+
 /* keyframes */
 
 @keyframes loading {

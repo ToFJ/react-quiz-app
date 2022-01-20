@@ -8,12 +8,18 @@ const AppProvider = ({ children }) => {
   const [error, setError] = useState({ display: false, msg: "" });
   const [max, setMax] = useState(0);
   const [replay, setReplay] = useState("");
+  const [start, setStart] = useState(false);
+  const [options, setOptions] = useState({
+    amount: 10,
+    category: 9,
+    difficulty: "easy",
+  });
 
-  // FUTURE TODO: change diff,category etc., leaderboard(localstorage)
-
-  const fetchData = async () => {
+  const fetchData = async (amount, category, difficulty) => {
     try {
-      const resp = await fetch("https://opentdb.com/api.php?amount=10");
+      const resp = await fetch(
+        `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}`
+      );
       const data = await resp.json();
       if (data.response_code === 0) {
         setData(data);
@@ -26,12 +32,29 @@ const AppProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+  const handleStart = () => {
+    const { amount, category, difficulty } = options;
+    fetchData(amount, category, difficulty);
+    setStart(true);
+  };
+  const handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setOptions({ ...options, [name]: value });
+  };
+
   useEffect(() => {
-    fetchData();
+    const { amount, category, difficulty } = options;
+    fetchData(amount, category, difficulty);
   }, [replay]);
 
   return (
-    <AppContext.Provider value={{ error, data, isLoading, max, setMax, setReplay }}>{children}</AppContext.Provider>
+    <AppContext.Provider
+      value={{ handleStart, handleChange, error, data, isLoading, max, setMax, setReplay, options, start, setStart }}
+    >
+      {children}
+    </AppContext.Provider>
   );
 };
 
