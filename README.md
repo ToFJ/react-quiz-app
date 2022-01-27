@@ -4,7 +4,7 @@ One of my first React Apps, kept the CSS to a minimum and really wanted to focus
 
 I worked extensively with useContext and got really accustomed to it. I used React Router to get a better feel on how it works.
 
-I used a custom useContext hook and learned a few more thinks about useContext.
+I used a custom useContext hook and learned a few more things about useContext.
 
 Also had to figure out why it would zoom into the options on click while on mobile.
 
